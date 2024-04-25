@@ -4,6 +4,9 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        if not s:
+            return 0
+        
         roman_values = {
             'I': 1,
             'V': 5,
@@ -18,6 +21,8 @@ class Solution(object):
         prev_value = 0
         
         for char in reversed(s):
+            if char not in roman_values:
+                return 0
             value = roman_values[char]
             if value < prev_value:
                 total -= value
@@ -26,4 +31,3 @@ class Solution(object):
             prev_value = value
         
         return total
-
